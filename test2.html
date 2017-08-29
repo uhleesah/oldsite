@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="js/parallax.js"></script>
+
+<style>
+	
+.scene,
+.layer {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0; }
+
+.scene {
+  min-height: 460px;
+  position: relative;
+  overflow: hidden; }
+
+.layer {
+  position: absolute; }
+  .layer div {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden; }
+	
+ .clouds {
+  background: url(images/background/clouds.png) no-repeat 100% 100%;
+  bottom: 10px;
+  background-size: 100%;
+  position: absolute;
+  width: 150%;
+  left: -25%;
+  top: 25%; }
+	
+ .backgroundmt {
+  background: url(images/background/mtcolumbia.jpg) no-repeat 100% 100%;
+  bottom: 96px;
+  background-size: 100%;
+  position: absolute;
+  width: 110%;
+  left: -5%;
+  top: -5%; }
+	
+ .foreground {
+  background: url(images/background/foreground-L.png) no-repeat 100% 100%;
+  bottom: 96px;
+  background-size: 100%;
+  position: absolute;
+  width: 110%;
+  left: -5%;
+  top: -5%; }
+	
+</style>
+</head>
+
+<body>
+
+<div id="container">
+	<ul id="scene" class="scene unselectable" data-friction-x="0.1" data-friction-y="0.0" data-scalar-x="25" data-scalar-y="15" data-limit-y="0"   data-clip-relative-input="true" style="width: 100%; height: 100%; -webkit-transform: translate3d(0, 0, 0); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;">
+	
+		<li class="layer" data-depth="0.00" style="position: relative; display: block; height: 100%; width: 100%; left: 0px; top: 0px; -webkit-transform: translate3d(0%, 0%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;">
+		</li>
+		
+		<li class="layer" data-depth="0.10" style="position: absolute; display: block; height: 100%; width: 100%; left: 0px; top: 0px; -webkit-transform: translate3d(0.29761904761904784%, -1.4893992932862183%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;"><div class="backgroundmt"></div>
+		</li>
+		
+		<li class="layer" data-depth="0.40" data-limit-y="0" style="position: absolute; display: block; height: 100%; width: 100%; left: 0px; top: 0px; -webkit-transform: translate3d(0.29761904761904784%, -1.4893992932862183%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;"><div class="clouds"></div></li>
+
+		<li class="layer" data-depth="0.10" style="position: absolute; display: block; height: 100%; width: 100%; left: 0px; top: 0px; -webkit-transform: translate3d(0.29761904761904784%, -1.4893992932862183%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;"><div class="foreground"></div>
+		
+		</li>
+	
+	</ul>
+
+
+
+</div>
+
+
+
+	<!-- Scripts -->
+	<script src="js/libraries.min.js"></script>
+	<script src="js/jquery.parallax.js"></script>
+	<script>
+
+	// jQuery Selections
+	var $html = $('html'),
+			$container = $('#container'),
+			$prompt = $('#prompt'),
+			$toggle = $('#toggle'),
+			$about = $('#about'),
+			$scene = $('#scene');
+
+	// Hide browser menu.
+	(function() {
+		setTimeout(function(){window.scrollTo(0,0);},0);
+	})();
+
+	// Setup FastClick.
+	FastClick.attach(document.body);
+
+	// Add touch functionality.
+	if (Hammer.HAS_TOUCHEVENTS) {
+		$container.hammer({drag_lock_to_axis: true});
+		_.tap($html, 'a,button,[data-tap]');
+	}
+
+	// Add touch or mouse class to html element.
+	$html.addClass(Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse');
+
+	// Resize handler.
+	(resize = function() {
+		$scene[0].style.width = window.innerWidth + 'px';
+		$scene[0].style.height = window.innerHeight + 'px';
+		if (!$prompt.hasClass('hide')) {
+			if (window.innerWidth < 600) {
+				$toggle.addClass('hide');
+			} else {
+				$toggle.removeClass('hide');
+			}
+		}
+	})();
+
+	// Attach window listeners.
+	window.onresize = _.debounce(resize, 200);
+	window.onscroll = _.debounce(resize, 200);
+
+	function showDetails() {
+		$about.removeClass('hide');
+		$toggle.removeClass('i');
+	}
+
+	function hideDetails() {
+		$about.addClass('hide');
+		$toggle.addClass('i');
+	}
+
+	// Listen for toggle click event.
+	$toggle.on('click', function(event) {
+		$toggle.hasClass('i') ? showDetails() : hideDetails();
+	});
+
+	// Pretty simple huh?
+	$scene.parallax();
+
+	// Check for orientation support.
+	setTimeout(function() {
+		if ($scene.data('mode') === 'cursor') {
+			$prompt.removeClass('hide');
+			if (window.innerWidth < 600) $toggle.addClass('hide');
+			$prompt.on('click', function(event) {
+				$prompt.addClass('hide');
+				if (window.innerWidth < 600) {
+					setTimeout(function() {
+						$toggle.removeClass('hide');
+					},1200);
+				}
+			});
+		}
+	},1000);
+
+	// Twitter stuff.
+	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+	// Facebook stuff.
+	(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=709933052350821";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+</body>
+</html>

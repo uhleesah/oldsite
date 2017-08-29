@@ -1,0 +1,517 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="js/parallax.js"></script>
+	<link rel="stylesheet" href="css/core.min.css" />
+	<link rel="stylesheet" href="css/skin.css" />
+<style>
+	.section-block {
+		z-index:1;
+	}
+.parallax-container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+	
+.scene,
+.layer {
+  display: block;
+  height: 110%;
+  width: 110%;
+  padding: -20px;
+  margin: -20px; }
+
+.scene {
+  min-height: 460px;
+  position: relative;
+  overflow: hidden; 
+ z-index:0}
+
+.layer {
+  position: absolute; }
+  .layer div {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden; }
+	
+ .clouds {
+  background: url(images/background/clouds.png) no-repeat;
+  bottom: 0px;
+  background-size: cover;
+  position: absolute;
+  width: 140%;
+  left: -0px;
+  margin-left:-0px;
+  top: 0; 
+  background-attachment: fixed;
+  background-position: left bottom;
+  }
+	
+
+ .backgroundmt {
+  background: url(images/background/mtcolumbia.jpg) no-repeat 100% 110%;
+  bottom: 0px;
+  background-size: cover;
+  position: absolute;
+  background-attachment: fixed;
+  background-position: center;
+  width: 140%;
+  left: -0%;
+  top: -0%; 
+
+  }
+	
+ .foreground {
+  background: url(images/background/foreground-full.png) no-repeat 100% 110%;
+  bottom: 0px;
+  background-size: cover;
+  position: absolute;
+  background-attachment: fixed;
+  background-position: center;
+  width: 140%;
+  left: -0%;
+  top: -0%; 
+
+  }
+	
+.accelerate {
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+.center {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 88%; }
+
+.wrapper2 {
+  min-height: 460px;
+  position: absolute;
+  overflow: hidden;
+  display: table;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0; }
+
+.about {
+position: relative;
+  display: block;
+  margin: 0 auto; 
+  font-size: 100%;
+  vertical-align: baseline;
+	*vertical-align: middle; }
+	
+.about2 {
+  -webkit-font-smoothing: auto;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  perspective: 1000px;
+  color: #666666; }
+  .about2:after {
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    position: absolute;
+    display: block;
+    width: 100%;
+    content: "";
+    height: 5%;
+    left: 0;
+    top: 0; }
+	
+.cell {
+  vertical-align: middle;
+  display: table-cell; }
+	
+.panel {
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  position: relative; }
+	
+.about .panel header {
+    padding: 1em 0 1em; }
+	  .about .panel header:before {
+        -webkit-border-radius: 6px 0 0 0;
+        -moz-border-radius: 6px 0 0 0;
+        border-radius: 6px 0 0 0;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding-box;
+        background-clip: padding-box;
+        background: transparent url(../../images/map.png) 0 0 no-repeat;
+        background-size: 60.5px 82.5px;
+        position: absolute;
+        display: block;
+        height: 150px;
+        width: 110px;
+        opacity: 0.8;
+        content: "";
+        left: 0;
+        top: 0; }
+    .about .panel h1 {
+      font-weight: 100;
+      color: #D92400; }
+      .about .panel h1 em {
+        color: #1D1F27; }
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle; }
+
+</style>
+</head>
+
+<body>
+
+	<!-- Overlay Navigation Menu -->
+	<div class="overlay-navigation-wrapper" data-no-scrollbar data-animation="scale-in">
+		<div class="overlay-navigation-scroll-pane">
+			<div class="overlay-navigation-inner">
+				<div class="v-align-middle">
+					<div class="overlay-navigation-header row collapse full-width">
+						<div class="column width-12">
+							<div class="navigation-hide overlay-nav-hide">
+								<a href="#">
+									<span class="icon-cancel"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="row collapse full-width">
+						<div class="column width-12">
+							<nav class="overlay-navigation nav-block center">
+					<ul>
+									<li class=current>
+										<a href="/index.html">Home</a>
+									</li>
+									<li>
+										<a href="/portfolio.html">Portfolio</a>
+									</li>
+									<li>
+										<a href="/featured.html">Featured Projects</a>
+									</li>
+									<li>
+										<a href="/about.html">About Me</a>
+							        </li>
+									<li>
+										<a href="/contact.html">Contact</a>
+									</li>
+					</ul>
+							</nav>
+						</div>
+					</div>
+					<div class="overlay-navigation-footer row full-width center">
+						<div class="column width-12 no-padding">
+							<p class="copyright">&copy; 2017 Alyssa Moreno Design. All rights reserved. <a href="/privacypolicy.html" target="_blank">Privacy Policy.</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Overlay Navigation Menu End -->
+
+	<!-- Side Navigation Menu -->
+	<aside class="side-navigation-wrapper enter-right" data-no-scrollbar data-animation="slide-in">
+		<div class="side-navigation-scroll-pane">
+			<div class="side-navigation-inner">
+				<div class="side-navigation-header">
+					<div class="navigation-hide side-nav-hide">
+						<a href="#">
+							<span class="icon-cancel medium"></span>
+						</a>
+					</div>
+				</div>
+				<nav class="side-navigation nav-block center">
+										<ul>
+									<li class="current">
+										<a href="index.html">Home</a>
+									</li>
+									<li>
+										<a href="portfolio.html">Portfolio</a>
+									</li>
+									<li>
+										<a href="featured.html">Feat. Projects</a>
+									</li>
+									<li>
+										<a href="about.html">About Me</a>
+							        </li>
+									<li>
+										<a href="contact.html">Contact</a>
+									</li>
+					</ul>
+				</nav>
+				<div class="side-navigation-footer center">
+					<p class="copyright no-margin-bottom">&copy; 2017 Alyssa Moreno Design. All rights reserved. <a href="/privacypolicy.html" target="_blank">Privacy Policy.</a></p>
+				</div>
+			</div>
+		</div>
+	</aside>
+	<!-- Side Navigation Menu End -->
+
+</div>
+	<div class="wrapper">
+		<div class="wrapper-inner">
+
+			<!-- Header -->
+			<header class="header header-absolute header-fixed-on-mobile header-transparent nav-bar" data-helper-in-threshold="200" data-helper-out-threshold="400"  data-sticky-threshold="200" data-bkg-threshold="200" data-compact-threshold="200">
+				<div class="header-inner">
+					<div class="row nav-bar">
+						<div class="column width-12 nav-bar-inner">
+							<div class="logo">
+								<div class="logo-inner">
+									<a href="index.html"><img src="images/logos/am-small.png" alt="Alyssa Moreno Design" /></a>
+									<a href="index.html"><img src="images/logos/am-small-light.png" alt="Alyssa Moreno Design" /></a>
+								</div>
+							</div>
+							<nav class="navigation nav-block secondary-navigation nav-right">
+								<ul>
+									<li class="aux-navigation">
+										<!-- Aux Navigation -->
+										<a href="#" class="navigation-show side-nav-show nav-icon">
+											<span class="icon-dots-three-vertical"></span> Menu
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- Header End -->
+<div id="container">
+
+<!-- ====== PARALLAX ======= -->
+<div  id="scene" class="scene unselectable" data-friction-x="0.1" data-friction-y="0.0" data-scalar-x="10" data-scalar-y="2" data-limit-y="1"   data-clip-relative-input="true" style="width: 110%; height: 110%; -webkit-transform: translate3d(0, 0, 0); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;">
+	<ul>
+	
+		<li class="layer" data-depth="0.00" style="-webkit-transform: translate3d(0%, 0%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;">
+		</li>
+		
+		<li class="layer" data-depth="0.10" style="-webkit-transform: translate3d(0.29761904761904784%, -1.4893992932862183%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;"><div class="backgroundmt"></div>
+		</li>
+		
+		<li class="layer" data-depth="0.50" style="position: relative; display: block; -webkit-transform: translate3d(0.29761904761904784%, -1.4893992932862183%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;"><div class="clouds"></div></li>
+
+		<li class="layer" data-depth="0.10" style="position: relative; display: block; -webkit-transform: translate3d(0.29761904761904784%, -1.4893992932862183%, 0px); -webkit-transform-style: preserve-3d; -webkit-backface-visibility: hidden;"><div class="foreground"></div></li>
+		
+	</ul>
+
+</div>
+
+<!-- ====== PARALLAX END ======= -->
+				<div id="clearfix" style="margin:0"></div>
+
+				<!-- Basic Feature Columns -->
+				<div id="about" class="section-block">
+					<div class="row flex">
+						<div class="column width-8">
+							<h2>Hello!</h2>
+							<p class="lead weight-regular mb-40">I am a <span class="highlight">graphic designer</span> based out of <span class="highlight">Long Beach, California</span>. I design for <span class="highlight">print</span> and <span class="highlight">screens</span>.</p>
+						</div>
+						<div class="column width-8">
+							<p><span class="highlight" style="font-size: 2em; line-height:normal;">Need a designer?</span> <br>I have experience designing the following (and more!): <br><i>Business cards, postcards, web advertisements, tradeshow displays, magazine ads, canopy tents, wall murals, signage, etc.</i></p>
+						</div>
+					</div>
+				</div>
+				<!-- Basic Feature Columns End -->
+
+
+<!-- Footer -->
+			<footer class="footer footer-bottom" style="z-index:3;">
+				<div class="footer-top">
+					<div class="row flex">
+						<div class="column width-4" style="float:left;">
+							<div class="widget">
+								<h4 class="widget-title">Quick Links</h4>
+								<p class="mb-20"><a href="/">Home</a><br><a href="/portfolio.html">Portfolio</a><br><a href="/featured.html">Featured Projects</a><br><a href="/about.html">About</a><br><a href="/contact.html">Contact</a></p>
+								<a href="mailto:contact@uhleesah.com" target="_top">contact@uhleesah.com</a>
+
+							</div>
+						</div>
+						<div class="column width-4">
+							<!-- <div class="widget">
+								<h4 class="widget-title">Studio News</h4>
+								<ul class="list-group small">
+									<li>
+										<a href="#">Our New Los Angeles Office</a>
+										<span class="post-info"><span class="post-date">27 Jul 2016</span></span>
+									</li>
+									<li>
+										<a href="#">Design Something Different</a>
+										<span class="post-info"><span class="post-date">22 Jul 2016</span></span>
+									</li>
+									<li>
+										<a href="#">Hidden Gems of Sublime...</a>
+										<span class="post-info"><span class="post-date">19 Mar 2016</span></span>
+									</li>
+								</ul>
+							</div> -->
+						</div>
+						<div class="column width-4">
+							<div class="widget right left-on-mobile">
+								<div class="footer-logo mb-30">
+									<a href="ref/index-two-columns.html"><img src="images/logos/am-small-light.png" alt="Logo" /></a>
+								</div>
+								<p>Alyssa Moreno | Design</p>
+								<ul class="social-list list-horizontal pull-right clear-float-on-mobile">
+									<li><a href="#"><span class="icon-twitter small"></span></a></li>
+									<li><a href="#"><span class="icon-facebook small"></span></a></li>
+									<li><a href="#"><span class="icon-youtube small"></span></a></li>
+									<li><a href="#"><span class="icon-dribbble small"></span></a></li>
+									<li><a href="#"><span class="icon-px small"></span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="row">
+						<div class="column width-12">
+							<div class="footer-bottom-inner center">
+					<p class="copyright no-margin-bottom">&copy; 2017 Alyssa Moreno Design. <a href="/privacypolicy.html" target="_blank">Privacy Policy.</a>
+							</p>
+								<p class="pull-right clear-float-on-mobile">
+									<a href="#" class="scroll-to-top" data-no-hide>Back Top</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- Footer End -->
+
+	</div>
+
+	<!-- Js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+	<script src="js/timber.master.min.js"></script>
+
+	<!-- Scripts -->
+	<script src="js/libraries.min.js"></script>
+	<script src="js/jquery.parallax.js"></script>
+	<script>
+
+	// jQuery Selections
+	var $html = $('html'),
+			$container = $('#container'),
+			$prompt = $('#prompt'),
+			$toggle = $('#toggle'),
+			$about = $('#about'),
+			$scene = $('#scene');
+
+	// Hide browser menu.
+	(function() {
+		setTimeout(function(){window.scrollTo(0,0);},0);
+	})();
+
+	// Setup FastClick.
+	FastClick.attach(document.body);
+
+	// Add touch functionality.
+	if (Hammer.HAS_TOUCHEVENTS) {
+		$container.hammer({drag_lock_to_axis: true});
+		_.tap($html, 'a,button,[data-tap]');
+	}
+
+	// Add touch or mouse class to html element.
+	$html.addClass(Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse');
+
+	// Resize handler.
+	(resize = function() {
+		$scene[0].style.width = window.innerWidth + 'px';
+		$scene[0].style.height = window.innerHeight + 'px';
+		if (!$prompt.hasClass('hide')) {
+			if (window.innerWidth < 600) {
+				$toggle.addClass('hide');
+			} else {
+				$toggle.removeClass('hide');
+			}
+		}
+	})();
+
+	// Attach window listeners.
+	window.onresize = _.debounce(resize, 200);
+	window.onscroll = _.debounce(resize, 200);
+
+	function showDetails() {
+		$about.removeClass('hide');
+		$toggle.removeClass('i');
+	}
+
+	function hideDetails() {
+		$about.addClass('hide');
+		$toggle.addClass('i');
+	}
+
+	// Listen for toggle click event.
+	$toggle.on('click', function(event) {
+		$toggle.hasClass('i') ? showDetails() : hideDetails();
+	});
+
+	// Pretty simple huh?
+	$scene.parallax();
+
+	// Check for orientation support.
+	setTimeout(function() {
+		if ($scene.data('mode') === 'cursor') {
+			$prompt.removeClass('hide');
+			if (window.innerWidth < 600) $toggle.addClass('hide');
+			$prompt.on('click', function(event) {
+				$prompt.addClass('hide');
+				if (window.innerWidth < 600) {
+					setTimeout(function() {
+						$toggle.removeClass('hide');
+					},1200);
+				}
+			});
+		}
+	},1000);
+
+	// Twitter stuff.
+	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+	// Facebook stuff.
+	(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=709933052350821";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+</body>
+</html>

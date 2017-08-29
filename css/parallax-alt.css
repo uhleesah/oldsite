@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, html {
+	height:100vh;
+	margin:0;
+}
+.section-block{
+	z-index:1;
+}
+.footer-bottom,
+.footer {
+	z-index:1;
+}
+
+.scene,
+.layer {
+  display: block;
+  height: 100%;
+  width: 110%;
+  z-index: 0;
+  /* padding: 5% 0 5% 0;
+  margin: -5% 0 -5% 0; */
+  }
+
+.scene {
+  min-height: 460px;
+  position: absolute;
+  overflow-x: hidden;
+	overflow-y:scroll;}
+
+.layer {
+  position: absolute; }
+  .layer div {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden; }
+	
+ .clouds {
+  background: url(/images/background/clouds-full.png) repeat-x 50% 100%;
+  bottom: -5%;
+  background-size: cover;
+  position: absolute;
+  background-position:left bottom;
+  width: 120%;
+  left: -15%;
+  top: -5%; }
+	
+ .backgroundmt {
+  background: url(/images/background/mtcolumbia.jpg) no-repeat 50% 100%;
+  bottom: 0px;
+  background-size: cover;
+  position: absolute;
+  width: 110%;
+  left: -5%;
+  top: -5%; }
+	
+ .foreground {
+  background: url(/images/background/foreground-full.png) no-repeat 50% 100%;
+  bottom: 0px;
+  background-size: cover;
+  position: absolute;
+  width: 110%;
+  left: -5%;
+  top: -5%; }
